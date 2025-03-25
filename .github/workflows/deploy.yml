@@ -37,7 +37,15 @@ jobs:
         run: |
           echo "대상 레포지토리 원격 클론"
           git clone https://github-actions:${{ secrets.GITHUB_TOKEN }}@github.com/ipcian/ipcianreact.github.io.git
-          echo "대상 레포지토리 원격 URL 설정"
-          git remote set-url origin https://github-actions:${{ secrets.GITHUB_TOKEN }}@github.com/ipcian/ipcianreact.github.io.git
           echo "디렉토리 변경"
           cd ipcianreact.github.io
+          echo "대상 레포지토리 원격 URL 설정"
+          git remote set-url origin https://github-actions:${{ secrets.GITHUB_TOKEN }}@github.com/ipcian/ipcianreact.github.io.git
+          echo "파일 삭제"
+          git rm -rf .
+          echo "git commit & push"
+          date=$(date +"%Y-%m-%d %H:%M:%S")
+          git commit -m "Previous deploy build result deleted - $date"
+          git push
+
+          
