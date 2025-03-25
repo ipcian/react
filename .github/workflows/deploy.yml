@@ -51,7 +51,7 @@ jobs:
           
           cd ipcianreact.github.io
           echo "기존 파일 삭제 후 추가"
-          git rm -rf .
+          git ls-files | xargs git rm
           cp -r ../dist/* ./
           git add .
           git commit -m '제발'
