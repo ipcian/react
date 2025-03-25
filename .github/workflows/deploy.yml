@@ -33,6 +33,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.TARGET_REPO_TOKEN }}
         run: |
+          
           echo "처리할 임시 디랙토리 생성"
           mkdir tempDir
           
@@ -45,9 +46,8 @@ jobs:
           echo "대상 레포지토리 원격 추가"
           git remote add origin https://github.com/ipcian/ipcianreact.github.io.git
 
-          echo "리모트 레포지토리 내용 전체 삭제"
+          echo "리모트 레포지토리 설정"
           git fetch origin
-          git branch --set-upstream-to=origin/main
           echo "리모트 레포지토리 내용 PULL"
           git pull
 #          git rm -rf .
