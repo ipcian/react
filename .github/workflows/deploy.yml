@@ -50,5 +50,3 @@ jobs:
           date=$(date +"%Y-%m-%d %H:%M:%S")
           git commit -m "Previous deploy build result deleted - $date"
           git push
-
-          
