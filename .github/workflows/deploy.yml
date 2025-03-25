@@ -45,10 +45,11 @@ jobs:
           echo "Git 사용자 정보 설정"
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-
+          echo "Git 커밋"
           date=$(date +"%Y-%m-%d %H:%M:%S")
           git commit -m "Previous deploy build result deleted - $date"
-          git push
+          echo "Git 푸시"
+          git push https://github-actions:${{ secrets.GITHUB_TOKEN }}@github.com/ipcian/ipcianreact.github.io.git
 
           echo "원래 디렉토리로 변경"
           cd ../
