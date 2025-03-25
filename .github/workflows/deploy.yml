@@ -47,7 +47,8 @@ jobs:
           git config --global user.name "$COMMIT_AUTHOR"
           git config --global credential.helper store
           
-          git rm -rf src/test.js
-          git add .
-          git commit -m 'test'
-          git push
+          git clone https://github.com/ipcian/ipcianreact.github.io.git
+          
+          cd ipcianreact.github.io
+          ls -al
+          
