@@ -13,6 +13,8 @@ jobs:
       # 1. 리포지토리 체크아웃
       - name: Checkout repository
         uses: actions/checkout@v3
+        with:
+          persist-credentials: true
 
       # 2. Node.js 설정 (버전은 필요에 따라 수정 가능)
       - name: Setup Node.js
