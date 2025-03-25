@@ -52,7 +52,8 @@ jobs:
           git branch --set-upstream-to=origin/main main
           echo "리모트 레포지토리 내용 PULL"
           git pull
-#          git rm -rf .
+          echo "리모트 레포지토리 내용 모두 제거"
+          git rm -rf .
 #
 #          # 원래 디렉토리로 변경
 #          cd ../
