@@ -72,6 +72,10 @@ jobs:
 
           echo "git file add ."
           git add .
+          
+          echo "github id setting"
+          git config --global user.email "ipciancompany@gmail.com"
+          git config --global user.name "ipcian94"
 
           echo "커밋 생성"
           date=$(date +"%Y-%m-%d %H:%M:%S")
