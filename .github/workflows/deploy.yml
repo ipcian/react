@@ -33,6 +33,11 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.TARGET_REPO_TOKEN }}
         run: |
+          # 처리할 임시 디랙토리 생성
+          mkdir tempDir
+          # 처리할 임시 디랙토리로 이동
+          cd tempDir
+          
           # 대상 레포지토리 초기화
           git init --initial-branch=main
 
@@ -43,6 +48,9 @@ jobs:
           git fetch origin
           git pull
           git rm -rf .
+          
+          # 원래 디렉토리로 변경
+          cd ../
           
           # 빌드된 파일이 있는 디렉토리로 이동
           cd dist
