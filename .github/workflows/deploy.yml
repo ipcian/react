@@ -50,6 +50,9 @@ jobs:
           git clone https://github.com/ipcian/ipcianreact.github.io.git
           
           cd ipcianreact.github.io
+          git config --global user.email "COMMIT_EMAIL"
+          git config --global user.name "$COMMIT_AUTHOR"
+          git config --global credential.helper store
           git rm -rf .
           git add .
           git commit -m '제발'
