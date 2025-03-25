@@ -54,6 +54,9 @@ jobs:
           git pull
           echo "리모트 레포지토리 내용 모두 제거"
           git rm -rf .
+          date=$(date +"%Y-%m-%d %H:%M:%S")
+          git commit -m "Previous deploy build result deleted - $date"
+          git push
 
           echo "원래 디렉토리로 변경"
           cd ../
@@ -74,12 +77,12 @@ jobs:
           git add .
           
           echo "github id setting"
-          git config --global user.email "ipciancompany@gmail.com"
-          git config --global user.name "ipcian94"
+#          git config --global user.email "ipciancompany@gmail.com"
+#          git config --global user.name "ipcian94"
 
           echo "커밋 생성"
           date=$(date +"%Y-%m-%d %H:%M:%S")
-          git commit -m "Deploy build result to target repo - $date"
+          git commit -m "Deploy build result uploaded - $date"
 
           echo "결과 강제 푸시"
           git push -f origin main
