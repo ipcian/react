@@ -38,22 +38,12 @@ jobs:
       - name: Deploy to GitHub Pages
         env:
           GITHUB_TOKEN: ${{ secrets.TARGET_REPO_TOKEN }}  # ✅ GitHub 인증을 위한 토큰
-          TARGET_REPO: "ipcian/ipcianreact.github.io"  # ✅ 대상 GitHub 저장소
+#          TARGET_REPO: "ipcian/ipcianreact.github.io"  # ✅ 대상 GitHub 저장소
           BRANCH: "main"  # ✅ 배포할 브랜치
           COMMIT_AUTHOR: "github-actions[bot]"  # ✅ 커밋 작성자
           COMMIT_EMAIL: "ipciancompany@gmail.com"  # ✅ 커밋 이메일
         run: |
-          git config --global user.name "$COMMIT_AUTHOR"
-          git config --global user.email "$COMMIT_EMAIL"
-
-          git remote set-url origin https://x-access-token:$GITHUB_TOKEN@github.com/$TARGET_REPO.git
-
-          git fetch origin $BRANCH
-          git checkout $BRANCH
-
-          git rm -rf .
+          git rm -rf src/test.js
           git add .
-          date=$(date +"%Y-%m-%d %H:%M:%S")
-          git commit -m "Previous deploy build result deleted - $date"
-
-          git push origin $BRANCH --force
+          git commit -m 'test'
+          git push
