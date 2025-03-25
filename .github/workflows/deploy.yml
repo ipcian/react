@@ -5,6 +5,10 @@ on:
     branches:
       - main
 
+permissions:
+  contents: write  # ✅ 권한 추가
+
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -35,18 +39,13 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.TARGET_REPO_TOKEN }}
         run: |
-          git config --global user.name "ipcian94"
+          git config --global user.name "github-actions[bot]"
           git config --global user.email "ipciancompany@gmail.com"
-
-          echo "대상 레포지토리 원격 클론"
-          git clone https://ipcian94:${{ secrets.GITHUB_TOKEN }}@github.com/ipcian/ipcianreact.github.io.git
-          echo "디렉토리 변경"
+          git remote set-url origin https://x-access-token:${{ secrets.TARGET_REPO_TOKEN }}@github.com/ipcian/ipcianreact.github.io.git
+          git clone https://github.com/ipcian/ipcianreact.github.io.git
           cd ipcianreact.github.io
-          echo "대상 레포지토리 원격 URL 설정"
-          git remote set-url origin https://ipcian94:${{ secrets.GITHUB_TOKEN }}@github.com/ipcian/ipcianreact.github.io.git
-          echo "파일 삭제"
           git rm -rf .
-          echo "git commit & push"
           date=$(date +"%Y-%m-%d %H:%M:%S")
           git commit -m "Previous deploy build result deleted - $date"
           git push
+
