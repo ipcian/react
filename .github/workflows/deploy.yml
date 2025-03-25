@@ -49,31 +49,7 @@ jobs:
           date=$(date +"%Y-%m-%d %H:%M:%S")
           git commit -m "Previous deploy build result deleted - $date"
           echo "Git 푸시"
-#          git push https://<GITHUB_USERNAME>:<YOUR_PERSONAL_ACCESS_TOKEN>@github.com/<GITHUB_USERNAME>/<REPO_NAME>.git
           git push https://ipcian:${{ secrets.GITHUB_TOKEN }}@github.com/ipcian/ipcianreact.github.io.git
 
           echo "원래 디렉토리로 변경"
           cd ../
-#
-#          echo "빌드된 파일이 있는 디렉토리로 이동"
-#          cd dist
-#
-#          echo "Git 초기화 & 사용자 정보 설정"
-#          git init --initial-branch=main
-#          git config user.name "github-actions[bot]"
-#          git config user.email "github-actions[bot]@users.noreply.github.com"
-#
-#          echo "대상 레포지토리 원격 추가"
-#          git remote add origin https://github-actions:${{ secrets.GITHUB_TOKEN }}@github.com/ipcian/ipcianreact.github.io.git
-#          git fetch origin
-#          git checkout main || git checkout -b main
-#          git branch --set-upstream-to=origin/main main
-#
-#          echo "파일 추가 및 커밋 생성"
-#          git add .
-#          date=$(date +"%Y-%m-%d %H:%M:%S")
-#          git commit -m "Deploy build result uploaded - $date"
-#
-#          echo "결과 강제 푸시"
-#          git push -f origin main
-
