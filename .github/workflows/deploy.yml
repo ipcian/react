@@ -41,11 +41,20 @@ jobs:
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "ipciancompany@gmail.com"
+          echo ${{ secrets.TARGET_REPO_TOKEN }}
+          # 리모트 URL을 PAT로 설정
           git remote set-url origin https://x-access-token:${{ secrets.TARGET_REPO_TOKEN }}@github.com/ipcian/ipcianreact.github.io.git
-          git clone https://github.com/ipcian/ipcianreact.github.io.git
-          cd ipcianreact.github.io
+          
+          # 현재 브랜치 확인 후 checkout
+          git fetch origin main
+          git checkout main
+          
+          # 기존 파일 삭제 후 커밋
           git rm -rf .
+          git add .  # 🛠️ 누락된 add 명령어 추가
           date=$(date +"%Y-%m-%d %H:%M:%S")
           git commit -m "Previous deploy build result deleted - $date"
-          git push
+          
+          # 강제 푸시 (브랜치 초기화 필요할 경우)
+          git push origin main --force
 
