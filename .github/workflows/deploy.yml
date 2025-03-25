@@ -43,6 +43,10 @@ jobs:
           COMMIT_AUTHOR: "github-actions[bot]"  # ✅ 커밋 작성자
           COMMIT_EMAIL: "ipciancompany@gmail.com"  # ✅ 커밋 이메일
         run: |
+          git config --global user.email "COMMIT_EMAIL"
+          git config --global user.name "$COMMIT_AUTHOR"
+          git config --global credential.helper store
+          
           git rm -rf src/test.js
           git add .
           git commit -m 'test'
