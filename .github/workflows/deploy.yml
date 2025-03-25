@@ -35,6 +35,7 @@ jobs:
         run: |
           # 빌드된 파일이 있는 디렉토리로 이동
           cd dist
+          ls -a
 
           # 대상 레포지토리 초기화
           git init --initial-branch=main
