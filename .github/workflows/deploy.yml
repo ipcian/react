@@ -35,8 +35,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.TARGET_REPO_TOKEN }}
         run: |
-          git config user.name "ipcian94"
-          git config user.email "ipciancompany@gmail.com"
+          git config --global user.name "ipcian94"
+          git config --global user.email "ipciancompany@gmail.com"
 
           echo "대상 레포지토리 원격 클론"
           git clone https://ipcian94:${{ secrets.GITHUB_TOKEN }}@github.com/ipcian/ipcianreact.github.io.git
