@@ -35,12 +35,15 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.TARGET_REPO_TOKEN }}
         run: |
+          git config user.name "ipcian94"
+          git config user.email "ipciancompany@gmail.com"
+
           echo "대상 레포지토리 원격 클론"
-          git clone https://github-actions:${{ secrets.GITHUB_TOKEN }}@github.com/ipcian/ipcianreact.github.io.git
+          git clone https://ipcian94:${{ secrets.GITHUB_TOKEN }}@github.com/ipcian/ipcianreact.github.io.git
           echo "디렉토리 변경"
           cd ipcianreact.github.io
           echo "대상 레포지토리 원격 URL 설정"
-          git remote set-url origin https://github-actions:${{ secrets.GITHUB_TOKEN }}@github.com/ipcian/ipcianreact.github.io.git
+          git remote set-url origin https://ipcian94:${{ secrets.GITHUB_TOKEN }}@github.com/ipcian/ipcianreact.github.io.git
           echo "파일 삭제"
           git rm -rf .
           echo "git commit & push"
