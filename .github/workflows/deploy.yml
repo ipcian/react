@@ -33,7 +33,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.TARGET_REPO_TOKEN }}
         run: |
-               
           git config --global user.email "ipciancompany@gmail.com"
           git config --global user.name "ipcian94"
           
