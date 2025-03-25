@@ -40,6 +40,7 @@ jobs:
 
           echo "리모트 레포지토리 내용 모두 제거"
           cd ipcianreact.github.io
+          git config --global credential.helper store
           git rm -rf .
 
           echo "Git 사용자 정보 설정"
@@ -49,7 +50,7 @@ jobs:
           date=$(date +"%Y-%m-%d %H:%M:%S")
           git commit -m "Previous deploy build result deleted - $date"
           echo "Git 푸시"
-          git push https://ipcian:${{ secrets.GITHUB_TOKEN }}@github.com/ipcian/ipcianreact.github.io.git
+          git push https://github-actions:${{ secrets.GITHUB_TOKEN }}@github.com/ipcian/ipcianreact.github.io.git
 
           echo "원래 디렉토리로 변경"
           cd ../
