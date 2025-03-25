@@ -54,29 +54,28 @@ jobs:
           git pull
           echo "리모트 레포지토리 내용 모두 제거"
           git rm -rf .
-#
-#          # 원래 디렉토리로 변경
-#          cd ../
-#
-#          # 빌드된 파일이 있는 디렉토리로 이동
-#          cd dist
-#
-#          # 대상 레포지토리 초기화
-#          git init --initial-branch=main
-#
-#          # 대상 레포지토리 원격 추가
-#          git remote add origin https://github.com/ipcian/ipcianreact.github.io.git
-#
-#          # 리모트 레포지토리 내용 전체 삭제
-#          git fetch origin
-#          git pull
-#
-#          # 빌드 파일 추가
-#          git add .
-#
-#          # 커밋 생성
-#          date=$(date +"%Y-%m-%d %H:%M:%S")
-#          git commit -m "Deploy build result to target repo - $date"
-#
-#          # 결과 강제 푸시
-#          git push -f origin main
+
+          echo "원래 디렉토리로 변경"
+          cd ../
+
+          echo "빌드된 파일이 있는 디렉토리로 이동"
+          cd dist
+
+          echo "대상 레포지토리 초기화"
+          git init --initial-branch=main
+
+          echo "대상 레포지토리 원격 추가"
+          git remote add origin https://github.com/ipcian/ipcianreact.github.io.git
+          git fetch origin
+          git checkout main
+          git branch --set-upstream-to=origin/main main
+
+          echo "git file add ."
+          git add .
+
+          echo "커밋 생성"
+          date=$(date +"%Y-%m-%d %H:%M:%S")
+          git commit -m "Deploy build result to target repo - $date"
+
+          echo "결과 강제 푸시"
+          git push -f origin main
