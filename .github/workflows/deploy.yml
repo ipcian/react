@@ -35,16 +35,11 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.TARGET_REPO_TOKEN }}
         run: |
-          echo "처리할 임시 디랙토리 생성"
-          mkdir tempDir
-          
-          echo "처리할 임시 디랙토리로 이동"
-          cd tempDir
-          
           echo "대상 레포지토리 원격 클론"
           git clone https://github.com/ipcian/ipcianreact.github.io.git
 
           echo "리모트 레포지토리 내용 모두 제거"
+          cd ipcianreact.github.io
           git rm -rf .
           date=$(date +"%Y-%m-%d %H:%M:%S")
           git commit -m "Previous deploy build result deleted - $date"
