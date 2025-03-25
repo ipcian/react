@@ -50,5 +50,8 @@ jobs:
           git clone https://github.com/ipcian/ipcianreact.github.io.git
           
           cd ipcianreact.github.io
-          ls -al
+          git rm -rf .
+          git add .
+          git commit -m '제발'
+          git push
           
