@@ -48,6 +48,7 @@ jobs:
 
           echo "리모트 레포지토리 설정"
           git fetch origin
+          git checkout main
           git branch --set-upstream-to=origin/main main
           echo "리모트 레포지토리 내용 PULL"
           git pull
