@@ -46,6 +46,8 @@ jobs:
           git config --global user.email "COMMIT_EMAIL"
           git config --global user.name "$COMMIT_AUTHOR"
           git config --global credential.helper store
+          rm -rf ipcianreact.github.io
+          
           git clone https://github.com/ipcian/ipcianreact.github.io.git
           cd ipcianreact.github.io
           echo "기존 파일 삭제 후 추가"
@@ -56,8 +58,15 @@ jobs:
             echo "폴더가 존재하지 않습니다. 디스트 폴더의 내용물을 복사합니다."
             cp -r ../dist/* ./          
           fi
+          
           git add .
           git commit -m '제발'
           git push https://x-access-token:${{ secrets.TARGET_REPO_TOKEN }}@github.com/ipcian/ipcianreact.github.io.git
+          
+          # 나머지 삭제 처리
+          cd ../
+          rm -rf node_modules
+          rm -rf dist
+          rm -rf ipcianreact.github.io
 
 
