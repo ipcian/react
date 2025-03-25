@@ -37,23 +37,21 @@ jobs:
           cd dist
 
           # 대상 레포지토리 초기화
-          git init
+          git init --initial-branch=main
 
-          # 기존 브랜치와 모든 파일 초기화
+          # 대상 레포지토리 원격 추가
           git remote add origin https://github.com/ipcian/ipcianreact.github.io.git
-          git fetch origin
-          git checkout -b main
 
           # 리모트 레포지토리 내용 전체 삭제
+          git fetch origin
           git rm -rf .
 
           # 빌드 파일 추가
           git add .
 
-          # 현재 날짜 및 시간 추가한 커밋 메시지 작성
+          # 커밋 생성
           date=$(date +"%Y-%m-%d %H:%M:%S")
           git commit -m "Deploy build result to target repo - $date"
 
-          # 결과물 강제 푸시
+          # 결과 강제 푸시
           git push -f origin main
-        
