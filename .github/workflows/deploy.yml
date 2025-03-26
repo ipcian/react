@@ -38,29 +38,23 @@ jobs:
       - name: Deploy to GitHub Pages
         env:
           GITHUB_TOKEN: ${{ secrets.TARGET_REPO_TOKEN }}  # ✅ GitHub 인증을 위한 토큰
-#          TARGET_REPO: "ipcian/ipcianreact.github.io"  # ✅ 대상 GitHub 저장소
-          BRANCH: "main"  # ✅ 배포할 브랜치
-          COMMIT_AUTHOR: "github-actions[bot]"  # ✅ 커밋 작성자
-          COMMIT_EMAIL: "ipciancompany@gmail.com"  # ✅ 커밋 이메일
+          BRANCH: ${{ secrets.BRANCH }}  # ✅ 배포할 브랜치
+          COMMIT_AUTHOR: ${{ secrets.COMMIT_AUTHOR }}  # ✅ 커밋 작성자
+          COMMIT_EMAIL: ${{ secrets.COMMIT_EMAIL }}  # ✅ 커밋 이메일
+          COMMIT_MESSAGE: ${{ secrets.COMMIT_MESSAGE }}  # ✅ 커밋 이메일
         run: |
-          git config --global user.email "COMMIT_EMAIL"
+          git config --global user.email "$COMMIT_EMAIL"
           git config --global user.name "$COMMIT_AUTHOR"
           git config --global credential.helper store
           
-          git clone https://github.com/ipcian/ipcianreact.github.io.git
-          cd ipcianreact.github.io
-          echo "기존 파일 삭제 후 추가"
-          if [ "$(git ls-files)" ]; then
-            echo "Git에서 추적되는 파일이 존재합니다. 내부 파일을 삭제합니다."
-            git rm -r --cached . # Git에서 관리 파일 제거
-          else
-            echo "Git에서 추적되는 파일이 없습니다. 디스트 폴더의 내용물을 복사합니다."
-          fi
+          cd dist
+          git init                    # Git 초기화 (필요한 경우)
+          git remote add origin https://github.com/ipcian/react.git
+          git checkout -b $BRANCH     # 새로운 브랜치를 생성 후 이동
           
-          cp -r ../dist/* ./
           git add .
-          git commit -m '제발'
-          git push https://x-access-token:${{ secrets.TARGET_REPO_TOKEN }}@github.com/ipcian/ipcianreact.github.io.git
+          git commit -m '$COMMIT_MESSAGE'
+          git push
           
           # 나머지 삭제 처리
           cd ../
