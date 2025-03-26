@@ -44,12 +44,18 @@ jobs:
           COMMIT_MESSAGE: ${{ secrets.COMMIT_MESSAGE }}  # ✅ 커밋 메시지
           TARGET_REPO: ${{ secrets.TARGET_REPO }}  # ✅ 타깃 레포
         run: |
-          cd dist
+          mkdir temp
+          cd temp
           git init -b $BRANCH
           git config --global user.email "$COMMIT_EMAIL"
           git config --global user.name "$COMMIT_AUTHOR"
           
           git remote add origin https://x-access-token:${{ secrets.TARGET_REPO_TOKEN }}@github.com/${{ secrets.TARGET_REPO }}
+          
+          echo "원격 레포지터리 파일 다운로드"
+          git pull -u origin $BRANCH
+          echo "배포 파일로 덮어쓰기"
+          cp -rf ../dist/* ./
 
           echo "원격 레포지터리에 파일전송"
           git add .
