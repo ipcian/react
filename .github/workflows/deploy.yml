@@ -41,16 +41,19 @@ jobs:
           BRANCH: ${{ secrets.BRANCH }}  # ✅ 배포할 브랜치
           COMMIT_AUTHOR: ${{ secrets.COMMIT_AUTHOR }}  # ✅ 커밋 작성자
           COMMIT_EMAIL: ${{ secrets.COMMIT_EMAIL }}  # ✅ 커밋 이메일
-          COMMIT_MESSAGE: ${{ secrets.COMMIT_MESSAGE }}  # ✅ 커밋 이메일
+          COMMIT_MESSAGE: ${{ secrets.COMMIT_MESSAGE }}  # ✅ 커밋 메시지
+          TARGET_REPO: ${{ secrets.TARGET_REPO }}  # ✅ 타깃 레포
         run: |
-          git config --global user.email "$COMMIT_EMAIL"
-          git config --global user.name "$COMMIT_AUTHOR"
-          git config --global credential.helper store
-          
+#          git config --global user.email "$COMMIT_EMAIL"
+#          git config --global user.name "$COMMIT_AUTHOR"
+#          git config --global credential.helper store
+
           cd dist
           git init                    # Git 초기화 (필요한 경우)
           git config --global user.email "$COMMIT_EMAIL"
           git config --global user.name "$COMMIT_AUTHOR"
+          git config --global credential.helper store
+          
           git remote add origin https://github.com/ipcian/react.git
           git checkout -b $BRANCH     # 새로운 브랜치를 생성 후 이동
           
@@ -62,6 +65,5 @@ jobs:
           cd ../
           rm -rf node_modules
           rm -rf dist
-          rm -rf ipcianreact.github.io
 
 
