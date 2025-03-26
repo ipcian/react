@@ -45,21 +45,16 @@ jobs:
           TARGET_REPO: ${{ secrets.TARGET_REPO }}  # ✅ 타깃 레포
         run: |
           cd dist
-          git init                    # Git 초기화 (필요한 경우)
+          git init -b $BRANCH
           git config --global user.email "$COMMIT_EMAIL"
           git config --global user.name "$COMMIT_AUTHOR"
-          git config --global credential.helper store
           
-          git remote add origin https://github.com/ipcian/react.git
-          git checkout -b $BRANCH     # 새로운 브랜치를 생성 후 이동
-          
+          git remote add origin https://x-access-token:${{ secrets.TARGET_REPO_TOKEN }}@github.com/${{ secrets.TARGET_REPO }}
+          git checkout -b $BRANCH
+        
           git add .
-          git commit -m '$COMMIT_MESSAGE'
+          git commit -m "$COMMIT_MESSAGE"
           git push -u origin $BRANCH
-          
-          # 나머지 삭제 처리
-          cd ../
-          rm -rf node_modules
-          rm -rf dist
+
 
 
