@@ -50,11 +50,11 @@ jobs:
           git config --global user.name "$COMMIT_AUTHOR"
           
           git remote add origin https://x-access-token:${{ secrets.TARGET_REPO_TOKEN }}@github.com/${{ secrets.TARGET_REPO }}
-          git checkout -b $BRANCH
-        
+
+          echo "원격 레포지터리에 파일전송"
           git add .
           git commit -m "$COMMIT_MESSAGE"
           git push -u origin $BRANCH
-
-
-
+          
+          
+          
