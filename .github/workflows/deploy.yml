@@ -49,6 +49,8 @@ jobs:
           
           cd dist
           git init                    # Git 초기화 (필요한 경우)
+          git config --global user.email "$COMMIT_EMAIL"
+          git config --global user.name "$COMMIT_AUTHOR"
           git remote add origin https://github.com/ipcian/react.git
           git checkout -b $BRANCH     # 새로운 브랜치를 생성 후 이동
           
