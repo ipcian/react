@@ -44,10 +44,6 @@ jobs:
           COMMIT_MESSAGE: ${{ secrets.COMMIT_MESSAGE }}  # ✅ 커밋 메시지
           TARGET_REPO: ${{ secrets.TARGET_REPO }}  # ✅ 타깃 레포
         run: |
-#          git config --global user.email "$COMMIT_EMAIL"
-#          git config --global user.name "$COMMIT_AUTHOR"
-#          git config --global credential.helper store
-
           cd dist
           git init                    # Git 초기화 (필요한 경우)
           git config --global user.email "$COMMIT_EMAIL"
