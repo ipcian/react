@@ -54,7 +54,7 @@ jobs:
           
           git add .
           git commit -m '$COMMIT_MESSAGE'
-          git push
+          git push -u origin $BRANCH
           
           # 나머지 삭제 처리
           cd ../
