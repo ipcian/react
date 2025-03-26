@@ -50,10 +50,10 @@ jobs:
           git config --global user.email "$COMMIT_EMAIL"
           git config --global user.name "$COMMIT_AUTHOR"
           
-          git remote add origin https://x-access-token:${{ secrets.TARGET_REPO_TOKEN }}@github.com/${{ secrets.TARGET_REPO }}
+          git remote add origin https://x-access-token:GITHUB_TOKEN@github.com/$TARGET_REPO
           
           echo "원격 레포지터리 파일 다운로드"
-          git pull https://x-access-token:${{ secrets.TARGET_REPO_TOKEN }}@github.com/${{ secrets.TARGET_REPO }} $BRANCH || true
+          git pull https://x-access-token:$GITHUB_TOKEN@github.com/$TARGET_REPO $BRANCH || true
           echo "배포 파일로 덮어쓰기"
           cp -rf ../dist/* ./
 
