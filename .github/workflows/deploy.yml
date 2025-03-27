@@ -11,7 +11,7 @@ permissions:
 
 jobs:
   build:
-    runs-on: ubuntu-8-cores
+    runs-on: ubuntu-latest
 
     steps:
       # 1. 리포지토리 체크아웃
