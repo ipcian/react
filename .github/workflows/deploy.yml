@@ -47,6 +47,9 @@ jobs:
           git fetch
           git checkout $BRANCH
           cp -rf ./dist/* ./
+          if !git add .; then echo "git add failed."; fi
+          if !git commit -m $COMMIT_MESSAGE; then echo "git commit failed"; fi
+          if !git push; then echo "git push failed"; fi
           
           
           
