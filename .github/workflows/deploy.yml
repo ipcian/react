@@ -60,7 +60,7 @@ jobs:
           echo "원격 레포지터리에 파일전송"
           git add .
           git commit -m "$COMMIT_MESSAGE"
-          git push -u origin $BRANCH
+          if ! git push -u origin $BRANCH ; then echo "Something happened" fi
           
           
           
