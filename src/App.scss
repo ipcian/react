@@ -1,0 +1,72 @@
+
+/* 어도비 폰트. */
+@import url("https://use.typekit.net/ers2qgl.css");
+
+html, body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Arial", sans-serif;
+    background-color: #040a1a; /* 어두운 배경색 */
+
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    color: white;
+}
+
+#root {
+    height: 100%;
+    width: 100%;
+    display: flex; /* 플렉스 박스 레이아웃 사용 */
+    justify-content: center; /* 가로 방향 중앙 정렬 */
+    align-items: center; /* 세로 방향 중앙 정렬 */
+    flex-direction: column; /* 콘텐츠를 세로 방향으로 배치 */
+}
+
+.header {
+    width: 100%;
+    height: 100px;
+    background-color: #040a1a;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    gap: 24px;
+    .menu {
+        position: relative;
+    }
+    .menu, .menu::after {
+        margin: 0;
+        font-size: 24px;
+        background: linear-gradient(90deg in lch longer hue, oklch(100% 4% 0) 0 0);
+        /*   background: linear-gradient(90deg in hsl longer hue, hsl(0 100% 70%) 0 0); */
+        background-size: 500% 100%;
+        animation: blend 30s infinite linear;
+        color: transparent;
+        background-clip: text;
+    }
+
+    .menu::after {
+        content: var(--content, 'HOME'); /* 기본값 'HOME' */
+        //font-size: clamp(2rem, 1rem + 3vw, 12rem);
+        font-size: 24px;
+        filter: blur(8px);
+        position: absolute;
+        /*   z-index: -1; */
+        left: 0;
+        mix-blend-mode: lighten;
+    }
+
+    @keyframes blend {
+        to { background-position: 500% 100%; }
+    }
+}
