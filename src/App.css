@@ -2,11 +2,13 @@
 /* 어도비 폰트. */
 @import url("https://use.typekit.net/ers2qgl.css");
 
-html {
+html, body {
     height: 100%;
 }
 
 body {
+    margin: 0;
+    padding: 0;
     font-family: "Arial", sans-serif;
     background-color: #040a1a; /* 어두운 배경색 */
     display: flex; /* 플렉스 박스 레이아웃 사용 */
