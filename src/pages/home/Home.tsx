@@ -6,8 +6,9 @@ const Home = () => {
     useEffect(() => {
         new ButtonEffect(document.querySelector('button')!)
     }, [])
+    const gotoHome = () => {}
     return (
-        <button>Explore oneself</button>
+        <button>Click to explore</button>
     );
 };
 

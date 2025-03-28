@@ -8,6 +8,5 @@ button {
     font-size: 3rem;
     font-weight: 700;
     padding: 1rem 2rem;
-    text-transform: uppercase;
     transform: skewX(-15deg); /* 텍스트를 -15도 기울임 */
 }

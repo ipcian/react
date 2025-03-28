@@ -19,7 +19,7 @@ const Frame = () => {
       <nav className={'header'}>
         {
           header.map((item) => {
-            return <div className={'menu'} key={item}>{item}</div>;
+            return <div className={'menu'} data-content={item} key={item}>{item}</div>;
           })
         }
       </nav>

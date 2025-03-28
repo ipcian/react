@@ -10,7 +10,8 @@ function App() {
     return (
         <BrowserRouter>
             <Routes>
-                <Route path={ROUTES.home} element={<Frame />}>
+                <Route path={ROUTES.root} element={<Frame />}>
+                  <Route path={ROUTES.root} element={<Home />}/>
                   <Route path={ROUTES.home} element={<Home />}/>
                 </Route>
                 <Route path={ROUTES._404} element={<NoFound />}/>

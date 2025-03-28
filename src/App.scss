@@ -40,30 +40,27 @@ body {
     justify-content: center;
     align-items: center;
     display: flex;
-    gap: 24px;
+    gap: 32px;
     .menu {
         position: relative;
-    }
-    .menu, .menu::after {
-        margin: 0;
         font-size: 24px;
-        background: linear-gradient(90deg in lch longer hue, oklch(100% 4% 0) 0 0);
-        /*   background: linear-gradient(90deg in hsl longer hue, hsl(0 100% 70%) 0 0); */
-        background-size: 500% 100%;
-        animation: blend 30s infinite linear;
-        color: transparent;
-        background-clip: text;
-    }
 
-    .menu::after {
-        content: var(--content, 'HOME'); /* 기본값 'HOME' */
-        //font-size: clamp(2rem, 1rem + 3vw, 12rem);
-        font-size: 24px;
-        filter: blur(8px);
-        position: absolute;
-        /*   z-index: -1; */
-        left: 0;
-        mix-blend-mode: lighten;
+        // 기본적인 ::after 스타일링
+        &::after {
+            margin: 0;
+            font-size: 24px;
+            background: linear-gradient(90deg in lch longer hue, oklch(100% 4% 0) 0 0);
+            background-size: 500% 100%;
+            animation: blend 30s infinite linear;
+            color: transparent;
+            background-clip: text;
+            content: attr(data-content); // 동적 데이터 사용
+            filter: blur(8px);
+            position: absolute;
+            left: 0;
+            mix-blend-mode: lighten;
+        }
+
     }
 
     @keyframes blend {
