@@ -59,9 +59,9 @@ jobs:
           cp -rf ../dist/* ./
 
           echo "원격 레포지터리에 파일전송"
-          git add .
-          git commit -m "$COMMIT_MESSAGE"
-          if ! git push --set-upstream origin $BRANCH ; then echo "Something happened" ; fi
+          if ! git add . ; then echo "No Add" ; fi
+          if ! git commit -m "$COMMIT_MESSAGE" ; then echo "No Commit" ; fi
+          if ! git push --set-upstream origin $BRANCH ; then echo "No Push" ; fi
           
           
           
