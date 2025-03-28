@@ -1,5 +1,10 @@
+
+._404 {
+    width: 100%;
+}
+
 .error {
-    text-align: center;
+    text-align: left;
 
     width: 100%;
     height: 120px;
@@ -13,7 +18,8 @@
     animation: noise-3 1s linear infinite;
 }
 
-.body-common {
+._404-common {
+
     content: 'error 404';
     font-size: 100px;
     text-align: center;
@@ -27,18 +33,18 @@
     opacity: 0;
     color: white;
 }
-body:after {
+._404:after {
 
     -webkit-animation: noise-1 .2s linear infinite;
     animation: noise-1 .2s linear infinite;
-    @extend .body-common;
+    @extend ._404-common;
 }
 
-body:before {
+._404:before {
 
     -webkit-animation: noise-2 .2s linear infinite;
     animation: noise-2 .2s linear infinite;
-    @extend .body-common;
+    @extend ._404-common;
 }
 
 .info {
