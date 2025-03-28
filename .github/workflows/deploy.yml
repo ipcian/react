@@ -42,9 +42,11 @@ jobs:
       - name: Build Project
         run: npm run build
 
-      # 5. GitHub Pages에 배포
+      # 5. GitHub 브랜치 변경
       - name: Checkout to GitHub Pages
         run: |
+          git config --global user.email "$COMMIT_EMAIL"
+          git config --global user.name "$COMMIT_AUTHOR"
           git fetch
           git checkout $BRANCH
       # 6. dist folder에서 파일 가지고 오기
