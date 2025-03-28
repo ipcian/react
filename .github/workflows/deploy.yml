@@ -44,15 +44,7 @@ jobs:
           COMMIT_MESSAGE: ${{ secrets.COMMIT_MESSAGE }}  # ✅ 커밋 메시지
           TARGET_REPO: ${{ secrets.TARGET_REPO }}  # ✅ 타깃 레포
         run: |
-          git config --global user.email "$COMMIT_EMAIL"
-          git config --global user.name "$COMMIT_AUTHOR"
-          git checkout $BRANCH
-          echo "배포 파일로 덮어쓰기"
-          cp -rf ../dist/* ./
-          echo "원격 레포지터리에 파일전송"
-          if ! git add . ; then echo "No Add" ; fi
-          if ! git commit -m "$COMMIT_MESSAGE" ; then echo "No Commit" ; fi
-          if ! git push --set-upstream origin $BRANCH ; then echo "No Push" ; fi
+          git status
           
           
           
