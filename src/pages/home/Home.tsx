@@ -7,7 +7,7 @@ const Home = () => {
         new ButtonEffect(document.querySelector('button')!)
     }, [])
     return (
-        <button>Click me</button>
+        <button>Click Me</button>
     );
 };
 
