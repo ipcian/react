@@ -32,7 +32,7 @@ jobs:
           COMMIT_MESSAGE: ${{ secrets.COMMIT_MESSAGE }}  # ✅ 커밋 메시지
           TARGET_REPO: ${{ secrets.TARGET_REPO }}  # ✅ 타깃 레포
         run: |
-          git checkout $BRANCH
+          git checkout gh-pages
           
           
           
