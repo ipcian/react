@@ -20,19 +20,7 @@ jobs:
         with:
           persist-credentials: true
 
-      # 2. Node.js 설정 (버전은 필요에 따라 수정 가능)
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: 20
 
-      # 3. 의존성 설치
-      - name: Install dependencies
-        run: npm install
-
-      # 4. 빌드 실행
-      - name: Build Project
-        run: npm run build
 
       # 5. GitHub Pages에 배포
       - name: Deploy to GitHub Pages
@@ -44,7 +32,7 @@ jobs:
           COMMIT_MESSAGE: ${{ secrets.COMMIT_MESSAGE }}  # ✅ 커밋 메시지
           TARGET_REPO: ${{ secrets.TARGET_REPO }}  # ✅ 타깃 레포
         run: |
-          git status
+          git checkout $BRANCH
           
           
           
