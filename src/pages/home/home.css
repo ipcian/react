@@ -1,0 +1,13 @@
+
+button {
+    all: unset; /* 기본 브라우저 스타일 제거 */
+    border: 6px solid #252e45;
+    border-radius: 10px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 3rem;
+    font-weight: 700;
+    padding: 1rem 2rem;
+    text-transform: uppercase;
+    transform: skewX(-15deg); /* 텍스트를 -15도 기울임 */
+}
