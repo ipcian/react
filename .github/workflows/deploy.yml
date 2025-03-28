@@ -8,6 +8,14 @@ on:
 permissions:
   contents: write  # ✅ 권한 추가
 
+env:
+  GITHUB_TOKEN: ${{ secrets.TARGET_REPO_TOKEN }}  # ✅ GitHub 인증을 위한 토큰
+  BRANCH: ${{ secrets.BRANCH }}  # ✅ 배포할 브랜치
+  COMMIT_AUTHOR: ${{ secrets.COMMIT_AUTHOR }}  # ✅ 커밋 작성자
+  COMMIT_EMAIL: ${{ secrets.COMMIT_EMAIL }}  # ✅ 커밋 이메일
+  COMMIT_MESSAGE: ${{ secrets.COMMIT_MESSAGE }}  # ✅ 커밋 메시지
+  TARGET_REPO: ${{ secrets.TARGET_REPO }}  # ✅ 타깃 레포
+
 
 jobs:
   build:
@@ -35,18 +43,19 @@ jobs:
         run: npm run build
 
       # 5. GitHub Pages에 배포
-      - name: Deploy to GitHub Pages
-        env:
-          GITHUB_TOKEN: ${{ secrets.TARGET_REPO_TOKEN }}  # ✅ GitHub 인증을 위한 토큰
-          BRANCH: ${{ secrets.BRANCH }}  # ✅ 배포할 브랜치
-          COMMIT_AUTHOR: ${{ secrets.COMMIT_AUTHOR }}  # ✅ 커밋 작성자
-          COMMIT_EMAIL: ${{ secrets.COMMIT_EMAIL }}  # ✅ 커밋 이메일
-          COMMIT_MESSAGE: ${{ secrets.COMMIT_MESSAGE }}  # ✅ 커밋 메시지
-          TARGET_REPO: ${{ secrets.TARGET_REPO }}  # ✅ 타깃 레포
+      - name: Checkout to GitHub Pages
         run: |
           git fetch
           git checkout $BRANCH
+      # 6. dist folder에서 파일 가지고 오기
+      - name: CP dist folder
+        run: |
+          ls -al
           cp -rf ./dist/* ./
+
+      # 6. dist folder에서 파일 가지고 오기
+      - name: Commit & push changes
+        run: |
           if ! git add .; then echo "git add failed."; fi
           if ! git commit -m $COMMIT_MESSAGE; then echo "git commit failed"; fi
           if ! git push; then echo "git push failed"; fi
