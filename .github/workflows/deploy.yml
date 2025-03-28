@@ -46,7 +46,7 @@ jobs:
         run: |
           mkdir temp
           cd temp
-          git init -b $BRANCH
+          git init
           git config --global user.email "$COMMIT_EMAIL"
           git config --global user.name "$COMMIT_AUTHOR"
           
